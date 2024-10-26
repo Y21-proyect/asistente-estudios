@@ -1,6 +1,6 @@
 import random # conseguir numero al azar en un rango
 import os # limpiar consola
-import pyttsx3
+import pyttsx3 # lectura en voz alta de frases
 import time
 
 eleccion=True
@@ -116,6 +116,7 @@ print ('    Es un programa tipo codigo abierto, puedes ver el codigo de programa
 print ('    programa para hacer programas, tipo IDLE). Es una forma de dar transparencia y que no está infectado\n\n')
 print ('    Si te gusta este programa y quieres saber más cosas cuirosas puedes visitar mi canal \n    de youtube https://www.youtube.com/@yogalidof.21 ')
 print ('    También visitar mi pagina y leer algunos libros gratis en \n    https://www.calameo.com/accounts/1582946  \n\n')
+print ('    O mi página de programas gratuitos de codigo abierto en https://github.com/y21-proyect 
 print ('    No hace falta que des un like, no vivo de esto. Un saludo \n\n    Doc \n\n\n    Pulsa culaquier tecla para continuar...')
 input('')
 
@@ -182,5 +183,6 @@ while eleccion==True:   ##### MENU DE SELECCION
       
     if valorA=='3': # PARTE DE PREGUNTAS Y RESPUESTAS
         sandra()
+
 
 
