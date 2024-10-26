@@ -6,4 +6,8 @@ Antes de que te haga preguntas has de ponerlas, el mismo programa tiene asistent
 Si compartes el programa com más estudiantes, podéis intercambiaros las memorias de preguntas que hacéis cada uno 
 y añadirlas a las que ya tenéis. Así aumenta el número de preguntas de forma fácil y rápida.
 
+Tienes que añadirte la librería de pyttsx3 a python. Se hace fácil. 
+
+pip install pyttsx3
+
 Solo tengo esta versión para windows. Las próximas versiones serán más generales.
