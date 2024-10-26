@@ -1,6 +1,6 @@
 import random # conseguir numero al azar en un rango
 import os # limpiar consola
-import pyttsx3 # lectura en voz alta de frases
+import pyttsx3
 import time
 
 eleccion=True
@@ -20,7 +20,7 @@ def clear_console(): #FUNCION LIMPIAR CONSOLA
 
     return()
 
-def sandra():
+def Elsa():
     preguntas=''
     preguntas=''
     letra=''
@@ -128,37 +128,12 @@ while eleccion==True:   ##### MENU DE SELECCION
     print('\n\n    ### INDICE ###\n')
     print('    0 - Añadir preguntas y respuestas manualmente')
     print('    1 - Iniciar preguntas y respuestas modo lectura')
-    print('    3 - Iniciar preguntas y respuestas modo a audio con Sandra')
-    print('    5 - Activar modo audio con Sandra')
-    print('    7 - Desactivar modo audio con Sandra')
+    print('    3 - Iniciar preguntas y respuestas modo audio con Elsa')
     print('    -----------------------------')
     valorA= input ('    Eleccion: ')
 
     clear_console()
 
-    if valorA==5:
-        valor=''
-        print ('    Para activar el modo audio y que te haga preguntas el ordenador, hay que instalar')
-        print ('    antes unos programas de Python, necesitas tener conexiona internet\n\n')
-        print ('    El programa bajará programas gratuitos que hay en internet y que pertenecen a un lenguaje')
-        print ('    de programación mundialmente conocido llamado python. Es gratuito y muy utilizado en el día a día.\n')
-        print ('    Si quieres que el programa añada cambios al ordenador pulsa 1 y luego ENTER')
-        print ('    Si no quieres que el programa añada cambios al ordenador pulsa ENTER.')
-
-        valor= input ('')
-
-        if valor=='1':
-            os.system('pip install pyttsx3')
-            print ('Programas para audio instalados. Pulsa ENTER para continuar...')
-            input('')
-            valor=''
-
-    if valor=='7':
-            print('pulsa y i luego ENTER cuando deje de aparecer texto en pantalla\n\n')
-            os.system('pip uninstall pyttsx3')
-            valor=''
-            input('')
-     
     while valorA=='0': # PARTE DE AÑADIR PREGUNTAS Y RESPUESTAS
         valor1=''
         valor2=''
@@ -182,7 +157,4 @@ while eleccion==True:   ##### MENU DE SELECCION
         
       
     if valorA=='3': # PARTE DE PREGUNTAS Y RESPUESTAS
-        sandra()
-
-
-
+        Elsa()
