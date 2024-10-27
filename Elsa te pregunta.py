@@ -10,6 +10,7 @@ valor1=''
 valor2=''
 valor3=''
 frase=''
+cuestionario=''
 
 def clear_console(): #FUNCION LIMPIAR CONSOLA
     if os.name == 'nt': # selector de sistema operativo para borrar el texto de la consola
@@ -20,18 +21,18 @@ def clear_console(): #FUNCION LIMPIAR CONSOLA
 
     return()
 
-def Elsa():
+def Elsa(listado):
     preguntas=''
     preguntas=''
     letra=''
     frase=''
-
+    print('\n\n    PREGUNTAS DE: ',listado, '\n\n')
 
     engine = pyttsx3.init()
     engine.setProperty('rate',130)
     voices = engine.getProperty('voices')
-    
-    with open('preguntas.txt', 'r', encoding='utf-8') as bus:
+
+    with open(listado, 'r', encoding='utf-8') as bus:
         preguntas = bus.readlines()
 
     random.shuffle(preguntas) # desordenar líneas de preguntas
@@ -40,44 +41,46 @@ def Elsa():
         for letra in pregunta: # leer letra a letra
             frase=frase+letra
             if letra== '?':
-                print (frase,'\n')
-                engine.say(frase)
-                engine.runAndWait()
-                input()
-                frase=''
-            if letra =='\n':
-                print (frase)
+                print ('    ',frase,'\n')
                 engine.say(frase)
                 engine.runAndWait()
                 frase=''
                 input()
 
-def pregunton():
+            if letra =='\n':
+                print ('    ',frase,'\n')
+                engine.say(frase)
+                engine.runAndWait()
+                frase=''
+                input()
+
+def pregunton(listado):
     preguntas=''
     preguntas=''
     letra=''
     frase=''
+    print('\n\n    PREGUNTAS DE: ',listado, '\n\n')
+
 
     
-    with open('preguntas.txt', 'r', encoding='utf-8') as bus:
+    with open(listado, 'r', encoding='utf-8') as bus:
         preguntas = bus.readlines()
 
     random.shuffle(preguntas) # desordenar líneas de preguntas
 
-    for pregunta in preguntas: # leer liena a linea
+    for pregunta in preguntas: # leer linea a linea
         for letra in pregunta: # leer letra a letra
             frase=frase+letra
             if letra== '?':
-                print (frase,'\n')
+                print ('    ',frase,'\n')
                 input()
                 frase=''
             if letra =='\n':
-                print (frase)
+                print ('    ',frase,'\n')
                 frase=''
                 input()
 
     return()
-
 
 
 a='\n\n'
@@ -95,15 +98,15 @@ k =  '                        yyyy   2   2    1 1   '
 l=   '                        yyyy      2       1   ' 
 ll=  '                        yyyy    2         1   '  
 m=   '                        yyyy   22222    11111 \n\n '
-n=   '                    (Yogalidof 21)\n\n\n'
+n=   '                    (Yogalidof 21)'
 
 o=(a,b,c,d,e,f,g,h,i,j,k,l,ll,m,n)
 
 for p in o:
     print(p)
-    time.sleep(0.21)
+    time.sleep(0.07)
 
-time.sleep(0.7)
+time.sleep(1)
 
 clear_console()
 
@@ -117,7 +120,7 @@ print ('    programa para hacer programas, tipo IDLE). Es una forma de dar trans
 print ('    Si te gusta este programa y quieres saber más cosas cuirosas puedes visitar mi canal \n    de youtube https://www.youtube.com/@yogalidof.21 ')
 print ('    También visitar mi pagina y leer algunos libros gratis en \n    https://www.calameo.com/accounts/1582946  \n\n')
 print ('    O mi página de programas gratuitos de codigo abierto en https://github.com/y21-proyect') 
-print ('    No hace falta que des un like, no vivo de esto. Un saludo \n\n    Doc \n\n\n    Pulsa culaquier tecla para continuar...')
+print ('    No hace falta que des un like, no vivo de esto. Un saludo \n\n    Doc \n\n\n    Pulsa ENTER para continuar...')
 input('')
 
 
@@ -126,15 +129,26 @@ clear_console()
 
 while eleccion==True:   ##### MENU DE SELECCION
     print('\n\n    ### INDICE ###\n')
-    print('    0 - Añadir preguntas y respuestas manualmente')
-    print('    1 - Iniciar preguntas y respuestas modo lectura')
-    print('    3 - Iniciar preguntas y respuestas modo audio con Elsa')
+    print('    0 - Elegir cuestionario')
+    print('    1 - Añadir preguntas y respuestas manualmente')
+    print('    3 - Iniciar preguntas y respuestas modo lectura')
+    print('    5 - Iniciar preguntas y respuestas modo audio con Elsa')
+    print('    7 - Presentacion de Elsa')
     print('    -----------------------------')
     valorA= input ('    Eleccion: ')
 
     clear_console()
 
-    while valorA=='0': # PARTE DE AÑADIR PREGUNTAS Y RESPUESTAS
+    if valorA=='0':
+        z=os.system('dir')
+        print ('--------------------------------------------------------------------------')
+        print ('\n\n    En el listado de arriba aparecen los cuestionarios que tienes. \n    Son todos los que acaban en .txt \n    A la izquierda te pone la fecha de creación, le sigue la hora en que se\n    cambió por última vez, la cantidad de memoria que ocupa y finalmente el nombre\n')
+        print ('    Indica solo el nombre del cuestionario a continuación.\n    Si no existe no te preocupes, escribe el nombre y el ordenador hará\n    automáticamente uno nuevo con el nombre que le esribas.\n    No pongas el .txt del final')
+        cuestionario= input('\n    ¿Nombre del cuestionario?.... ')
+        cuestionario=cuestionario+'.txt'
+        clear_console()
+
+    while valorA=='1': # PARTE DE AÑADIR PREGUNTAS Y RESPUESTAS
         valor1=''
         valor2=''
     
@@ -147,14 +161,25 @@ while eleccion==True:   ##### MENU DE SELECCION
         if valor3=='' or valor3=='s':
             valor1='\n'+valor1+valor2
             if valor3=='s':
-                valor=''
-            with open('preguntas.txt', 'a', encoding='utf-8') as preguntas:
+                valor3=''
+            with open(cuestionario, 'a', encoding='utf-8') as preguntas:
                 preguntas.write(valor1)
 
 
-    if valorA=='1':
-        pregunton()
+    while valorA=='3': # PARTE DE PREGUNTAS Y RESPUESTAS VISUAL
+        pregunton(cuestionario)
+        clear_console()
         
       
-    if valorA=='3': # PARTE DE PREGUNTAS Y RESPUESTAS
-        Elsa()
+    while valorA=='5': # PARTE DE PREGUNTAS Y RESPUESTAS AUDIO
+        Elsa(cuestionario)
+        clear_console()
+        
+
+    if valorA=='7':
+        engine = pyttsx3.init()
+        engine.setProperty('rate',130)
+        voices = engine.getProperty('voices')
+        engine.say('Muy buenas, mi nombre és Elsa. Voy a ser tu asistencia de audio en las preguntas. Te deseo suerte en los estudios y doy animo para lograr tu objetivo. Mucha suerte, besos.')
+        engine.runAndWait()
+
