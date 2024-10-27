@@ -131,6 +131,7 @@ while eleccion==True:   ##### MENU DE SELECCION
     print('\n\n    ### INDICE ###\n')
     print('    0 - Elegir cuestionario')
     print('    1 - Añadir preguntas y respuestas manualmente')
+    print('    2 - Añadir preguntas y respuestas de otra persona')
     print('    3 - Iniciar preguntas y respuestas modo lectura')
     print('    5 - Iniciar preguntas y respuestas modo audio con Elsa')
     print('    7 - Presentacion de Elsa')
@@ -139,13 +140,15 @@ while eleccion==True:   ##### MENU DE SELECCION
 
     clear_console()
 
-    if valorA=='0':
+    if valorA=='0':  # PARTE AÑADIR CUESTIONARIO PARA PREGUNTAS
         z=os.system('dir')
         print ('--------------------------------------------------------------------------')
         print ('\n\n    En el listado de arriba aparecen los cuestionarios que tienes. \n    Son todos los que acaban en .txt \n    A la izquierda te pone la fecha de creación, le sigue la hora en que se\n    cambió por última vez, la cantidad de memoria que ocupa y finalmente el nombre\n')
         print ('    Indica solo el nombre del cuestionario a continuación.\n    Si no existe no te preocupes, escribe el nombre y el ordenador hará\n    automáticamente uno nuevo con el nombre que le esribas.\n    No pongas el .txt del final')
         cuestionario= input('\n    ¿Nombre del cuestionario?.... ')
         cuestionario=cuestionario+'.txt'
+        print ('    Has elegido el cuestionario', cuestionario)
+        input ('    Pulsa ENTER para volver a menu de inicio') 
         clear_console()
 
     while valorA=='1': # PARTE DE AÑADIR PREGUNTAS Y RESPUESTAS
@@ -166,6 +169,48 @@ while eleccion==True:   ##### MENU DE SELECCION
                 preguntas.write(valor1)
 
 
+    while valorA=='2': # PARTE AÑADIR PREGUNTAS DE OTRA PERSONA
+        z=os.system('dir')
+        print ('--------------------------------------------------------------------------')
+        print ('\n\n    En el listado de arriba aparecen los cuestionarios que tienes. \n')
+        print ('    Son todos los que acaban en .txt \n    A la izquierda te pone la fecha de creación')
+        print ('    le sigue la hora en que se cambió por última vez, la cantidad de memoria que ocupa')
+        print ('    y finalmente el nombre\n')
+        print ('    Indica el nombre del cuestionario sin el .txt, o, da a ENTER pasa salir sin cambios')
+
+        valor1= input('\n   ¿Nombre del cuestionario que quieres ampliar?.... ')
+        valor1=valor1+'.txt'
+        valor2= input('   ¿Nombre del cuestionario que quieres añadir al que amplias?.... ')
+        valor2=valor2+'.txt'
+
+        if valor1=='.txt':
+            valor1=''
+            valorA=''
+
+ 
+        if valor1!='' and valor2!='':
+                    print ('    Quieres ampliar el cuestionario: ', valor1, ' con el cuestionario ',valor2)
+                    valor3= input ('    ¿Son correctos estos datos?. Pulsa ENTER para sí, n y luego ENTER para no...')
+                    clear_console()
+
+                    if valor3=='':
+                        print('\n\n')
+                        with open(valor2, 'r', encoding='utf-8') as bus:
+                            preguntas = bus.readlines()
+                            print('-----> Añadiendo preguntas y respuestas')
+                            with open(valor1, 'a', encoding='utf-8') as bus:
+                                for linea in preguntas:
+                                    bus.write(linea)
+                                    print(linea)
+                        valorA=''
+                        print('\n\n    Preguntas y respuestas de ',valor2, 'añadidas a ',valor1, '. Pulsa ENTER para salir')
+                        input('')
+                    else:
+                        valorA=''
+
+        clear_console
+
+    
     while valorA=='3': # PARTE DE PREGUNTAS Y RESPUESTAS VISUAL
         pregunton(cuestionario)
         clear_console()
@@ -182,4 +227,3 @@ while eleccion==True:   ##### MENU DE SELECCION
         voices = engine.getProperty('voices')
         engine.say('Muy buenas, mi nombre és Elsa. Voy a ser tu asistencia de audio en las preguntas. Te deseo suerte en los estudios y doy animo para lograr tu objetivo. Mucha suerte, besos.')
         engine.runAndWait()
-
