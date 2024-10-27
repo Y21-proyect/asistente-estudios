@@ -10,7 +10,7 @@ You have to add several python libraries. The install program is an assistant th
 ------------------------------------------------------------------------------------------------------------------------
 
 ---- ESPAÑOL (SPANISH LENGUAJE) ----- 
-'Elsa te pregunta' és un programa muy ligero escrito en python que te hace preguntas al azar de un listado previo. Si no sabes la respuesta, te la da dándole ENTER. Tienes la opción de que te haga las preguntas en audio, así te ahorras leer y leer.
+'Elsa pregunta' és un programa muy ligero escrito en python que te hace preguntas al azar de un listado previo. Si no sabes la respuesta, te la da dándole ENTER. Tienes la opción de que te haga las preguntas en audio, así te ahorras leer y leer.
 
 Antes de que te haga preguntas y respuetas has de escribirlas tú. El programa tiene  un asistente para que las añadirlas.
 Si compartes el programa com más estudiantes, podéis intercambiaros las memorias de preguntas que hacéis cada uno y añadirlas a las que ya tenéis. Así aumenta el número de preguntas de forma fácil y rápida.
