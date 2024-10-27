@@ -132,6 +132,7 @@ while eleccion==True:   ##### MENU DE SELECCION
     print('\n\n    ### MAIN ###\n')
     print('    0 - Choose Quiz')
     print('    1 - Add questions and answers manually')
+    print('    2 - Add one quiz to another one')
     print('    3 - Start Q&A in reading mode')
     print('    5 - Start Q&A audio mode with Elsa')
     print('    7 - Introducing Elsa')
@@ -153,6 +154,50 @@ while eleccion==True:   ##### MENU DE SELECCION
         cuestionario= input('\n    ¿Quiz Name?.... ')
         cuestionario=cuestionario+'.txt'
         clear_console()
+
+    while valorA=='2': # PARTE AÑADIR PREGUNTAS DE OTRA PERSONA
+         os.system('dir')
+         print ('--------------------------------------------------------------------------')
+         print ('\n\n    The list above shows the quiz you have.')
+         print ('    They are all those who end up in.txt. On the left it puts the date')
+         print ('    of creation, followed by the time it was last changed, the amount')
+         print ('    of memory that it occupies and finally the name\n')
+         print ('    Type only the name of the quiz below, do not put the .txt at the end')
+         print ('    or type ENTER to exit')
+
+         valor1= input('\n   ¿Name of the quiz you want to expand?.... ')
+         valor1=valor1+'.txt'
+         valor2= input('   ¿Name of the quiz you want to add to the one you expand?.... ')
+         valor2=valor2+'.txt'
+
+         if valor1=='.txt':
+            valor1=''
+            valorA=''
+
+         if valor1!='' and valor2!='':
+             print ('    You want to expand te quiz ', valor1, ' with the quiz ',valor2)
+             valor3= input ('    Are these data correct? Press ENTER for yes or n and then ENTER for not...')
+             clear_console()
+
+             if valor3=='':
+                 print('\n\n')
+                 with open(valor2, 'r', encoding='utf-8') as bus:
+                     preguntas = bus.readlines()
+                     print ('-----> Adding quizs:')
+                     with open(valor1, 'a', encoding='utf-8') as bus:
+                              for linea in preguntas:
+                                   bus.write(linea)
+                                   print(linea)
+                 valorA=''
+                 print('\n\n Quiz from ',valor2, 'added to ',valor1,'. Push ENTER to exit')
+                 input('')
+
+             else:
+                valorA=''
+
+         clear_console()
+        
+
 
     while valorA=='1': # PARTE DE AÑADIR PREGUNTAS Y RESPUESTAS
         valor1=''
